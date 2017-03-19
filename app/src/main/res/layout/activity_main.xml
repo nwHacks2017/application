@@ -13,23 +13,34 @@
         android:orientation="horizontal"
         android:weightSum="3" >
 
-        <ImageButton
+        <Button
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:drawable="@drawable/tile"
+            android:text="Information"
+            android:gravity="bottom|center"
+            android:paddingBottom="30dp"
+            android:background="@drawable/tile"
             android:id="@+id/btnInformation" />
 
-        <ImageButton
+        <Button
             android:id="@+id/btnEmergencyContact"
             android:layout_width="0dp"
+            android:text="Emergency contact"
+            android:gravity="bottom|center"
+            android:paddingBottom="30dp"
             android:layout_height="fill_parent"
+            android:background="@drawable/tile"
             android:layout_weight="1" />
 
-        <ImageButton
+        <Button
             android:id="@+id/btnHistory"
             android:layout_width="0dp"
+            android:text="History"
+            android:gravity="bottom|center"
+            android:paddingBottom="30dp"
             android:layout_height="fill_parent"
+            android:background="@drawable/tile"
             android:layout_weight="1" />
     </LinearLayout>
 
@@ -40,10 +51,14 @@
         android:orientation="horizontal"
         android:weightSum="3" >
 
-        <ImageButton
+        <Button
             android:id="@+id/btnMedication"
+            android:text="Medication"
+            android:gravity="bottom|center"
+            android:paddingBottom="30dp"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
+            android:background="@drawable/tile"
             android:layout_weight="1" />
 
     </LinearLayout>

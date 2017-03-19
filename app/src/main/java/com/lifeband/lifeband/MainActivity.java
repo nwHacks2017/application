@@ -3,6 +3,7 @@ package com.lifeband.lifeband;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -40,7 +41,7 @@ import java.util.List;
 
 public class MainActivity extends Activity {
 
-    private ImageButton mTrigger;
+    private Button mTrigger;
     private RequestQueue mVolleyQueue;
     private ListView mListView;
     private ProgressDialog mProgress;
@@ -82,20 +83,65 @@ public class MainActivity extends Activity {
         makeSampleHttpRequest();
         System.out.println("After request");
 
-        ImageButton btnInformation= (ImageButton) findViewById(R.id.btnInformation);/*
-        ImageButton btnEmergencyContact= (ImageButton) findViewById(R.id.btnEmergencyContact);
-        ImageButton btnHistory= (ImageButton) findViewById(R.id.btnHistory);
-        ImageButton btnMedication= (ImageButton) findViewById(R.id.btnMedication);*/
+        Button btnInformation= (Button) findViewById(R.id.btnInformation);
+        Button btnEmergencyContact= (Button) findViewById(R.id.btnEmergencyContact);
+        Button btnHistory= (Button) findViewById(R.id.btnHistory);
+        Button btnMedication= (Button) findViewById(R.id.btnMedication);
         showToast("Sent");
 
         btnInformation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                makeSampleHttpRequest();
+                Intent i = new Intent();
+                Bundle b = new Bundle();
+                b.putParcelable("birth", patientData.getInformation().getBirth());
+                b.putParcelable("id", patientData.getInformation());
+                i.putExtras(b);
+                i.setClass(getApplicationContext(), InformationActivity.class);
+                startActivity(i);
+                //makeSampleHttpRequest();
             }
         });
 
+        btnEmergencyContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+ /*               Intent i = new Intent();
+                Bundle b = new Bundle();
+                b.putParcelable(Constants.CUSTOM_LISTING, currentListing);
+                i.putExtras(b);
+                i.setClass(this, SearchDetailsActivity.class);
+                startActivity(i);*/
+                //makeSampleHttpRequest();
+            }
+        });
+
+        btnHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+        /*        CustomListing currentListing = new CustomListing();
+                Intent i = new Intent();
+                Bundle b = new Bundle();
+                b.putParcelable(Constants.CUSTOM_LISTING, currentListing);
+                i.putExtras(b);
+                i.setClass(this, SearchDetailsActivity.class);
+                startActivity(i);*/
+                //makeSampleHttpRequest();
+            }
+        });
+
+        btnMedication.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+     /*           Intent i = new Intent();
+                Bundle b = new Bundle();
+                b.putParcelable("", data);
+                i.putExtras(b);
+                i.setClass(this, SearchDetailsActivity.class);
+                startActivity(i);*/
+                //makeSampleHttpRequest();
+            }
+        });
       /*  while(patientData == null){
 
         }
