@@ -4,34 +4,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     >
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/apptoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        tools:textAlignment="center"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        />
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/parent"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
         android:background="#4C92CE"
-        android:weightSum="3">
+        android:id="@+id/parent"
+        android:weightSum="3" >
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/apptoolbar"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.20"
-            android:background="@color/colorPrimaryDark"
-            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-            tools:textAlignment="center"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:weightSum="3">
-
+            android:weightSum="2" >
 
             <Button
                 android:layout_width="0dp"
@@ -50,10 +47,18 @@
                 android:gravity="bottom|center"
                 android:paddingBottom="30dp"
                 android:layout_height="fill_parent"
-
                 android:background="@drawable/tile"
                 android:layout_weight="1" />
 
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="2" >
             <Button
                 android:id="@+id/btnHistory"
                 android:layout_width="0dp"
@@ -63,16 +68,6 @@
                 android:layout_height="fill_parent"
                 android:background="@drawable/tile"
                 android:layout_weight="1" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:weightSum="3" >
-
-
             <Button
                 android:id="@+id/btnMedication"
                 android:text="Medication"
@@ -86,6 +81,7 @@
         </LinearLayout>
 
     </LinearLayout>
+
 
     <android.support.design.widget.FloatingActionButton
 

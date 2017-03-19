@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4C92CE"
 
+    android:layout_alignParentBottom="false"
+    android:layout_alignParentStart="false"
+    android:layout_alignWithParentIfMissing="false"
+    android:layout_centerHorizontal="false"
+    android:layout_centerInParent="false"
+    android:background="#4C92CE"
+    android:gravity="center_vertical|center_horizontal"
+    android:orientation="vertical"
     tools:context="com.lifeband.lifeband.NFCActivity">
 
 
@@ -21,7 +28,9 @@
         android:id="@+id/testingNfc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="Please tap your phone with a patient tag."
+        android:textColor="@android:color/background_light"
+        android:textColorLink="@android:color/background_light"
         tools:layout_editor_absoluteX="162dp"
         tools:layout_editor_absoluteY="415dp" />
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
