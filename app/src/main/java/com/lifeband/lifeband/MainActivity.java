@@ -1,23 +1,21 @@
 package com.lifeband.lifeband;
 
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+
 import android.net.Uri;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,16 +34,12 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
-
     private RequestQueue mVolleyQueue;
     private TextView textView;
 
@@ -86,6 +80,21 @@ public class MainActivity extends AppCompatActivity {
         myToolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(myToolbar);
 
+        // FAB
+        final Context con = getApplicationContext();
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setBackgroundColor(getResources().getColor(R.color.colorComplement));
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i  = new Intent(con, NFCActivity.class);
+                startActivity(i);
+
+            }
+        });
+
+
 
 
         patientData = null;
@@ -100,19 +109,71 @@ public class MainActivity extends AppCompatActivity {
         makeSampleHttpRequest();
         System.out.println("After request");
 
-        ImageButton btnInformation= (ImageButton) findViewById(R.id.btnInformation);/*
 
+//        ImageButton btnInformation= (ImageButton) findViewById(R.id.btnInformation);
+
+
+
+        Button btnInformation = (Button) findViewById(R.id.btnInformation);
+        Button btnEmergencyContact= (Button) findViewById(R.id.btnEmergencyContact);
+        Button btnHistory= (Button) findViewById(R.id.btnHistory);
+        Button btnMedication= (Button) findViewById(R.id.btnMedication);
 
         showToast("Sent");
 
         btnInformation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                makeSampleHttpRequest();
+                Intent i = new Intent();
+                Bundle b = new Bundle();
+                b.putParcelable("birth", patientData.getInformation().getBirth());
+                b.putParcelable("id", patientData.getInformation());
+                i.putExtras(b);
+                i.setClass(getApplicationContext(), InformationActivity.class);
+                startActivity(i);
+                //makeSampleHttpRequest();
             }
         });
 
+        btnEmergencyContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+ /*               Intent i = new Intent();
+                Bundle b = new Bundle();
+                b.putParcelable(Constants.CUSTOM_LISTING, currentListing);
+                i.putExtras(b);
+                i.setClass(this, SearchDetailsActivity.class);
+                startActivity(i);*/
+                //makeSampleHttpRequest();
+            }
+        });
+
+        btnHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+        /*        CustomListing currentListing = new CustomListing();
+                Intent i = new Intent();
+                Bundle b = new Bundle();
+                b.putParcelable(Constants.CUSTOM_LISTING, currentListing);
+                i.putExtras(b);
+                i.setClass(this, SearchDetailsActivity.class);
+                startActivity(i);*/
+                //makeSampleHttpRequest();
+            }
+        });
+
+        btnMedication.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+     /*           Intent i = new Intent();
+                Bundle b = new Bundle();
+                b.putParcelable("", data);
+                i.putExtras(b);
+                i.setClass(this, SearchDetailsActivity.class);
+                startActivity(i);*/
+                //makeSampleHttpRequest();
+            }
+        });
       /*  while(patientData == null){
 
         }

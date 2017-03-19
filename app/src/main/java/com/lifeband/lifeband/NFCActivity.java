@@ -21,9 +21,6 @@ public class NFCActivity extends AppCompatActivity {
 
     public NFCActivity(){
         super();
-        if (!instantiateNfcAdapter()){
-            return;
-        }
         nfcReader = new NfcReader();
 
     }
@@ -31,6 +28,12 @@ public class NFCActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (!instantiateNfcAdapter()){
+            return;
+        }
+        
+
         setContentView(R.layout.activity_nfc);
         textview = (TextView) findViewById(R.id.testingNfc);
 /*        RotateAnimation anim =  new RotateAnimation(30, 90,

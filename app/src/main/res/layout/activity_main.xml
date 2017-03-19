@@ -1,106 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:background="#4C92CE"
-    android:weightSum="3">
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/apptoolbar"
+    >
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/parent"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.20"
-        android:background="?attr/colorPrimary"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        tools:textAlignment="center"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:background="#4C92CE"
         android:weightSum="3">
 
-        <ImageButton
-            android:id="@+id/btnInformation"
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/apptoolbar"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.20"
+            android:background="@color/colorPrimaryDark"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            tools:textAlignment="center"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:drawable="@drawable/tile" />
+            android:orientation="horizontal"
+            android:weightSum="3">
 
-        <ImageButton
-            android:id="@+id/btnEmergencyContact"
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:text="Information"
+                android:gravity="bottom|center"
+                android:paddingBottom="30dp"
+                android:background="@drawable/tile"
+                android:id="@+id/btnInformation" />
+
+            <Button
+                android:id="@+id/btnEmergencyContact"
+                android:layout_width="0dp"
+                android:text="Emergency contact"
+                android:gravity="bottom|center"
+                android:paddingBottom="30dp"
+                android:layout_height="fill_parent"
+
+                android:background="@drawable/tile"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/btnHistory"
+                android:layout_width="0dp"
+                android:text="History"
+                android:gravity="bottom|center"
+                android:paddingBottom="30dp"
+                android:layout_height="fill_parent"
+                android:background="@drawable/tile"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:adjustViewBounds="false" />
+            android:orientation="horizontal"
+            android:weightSum="3" >
+
+
+            <Button
+                android:id="@+id/btnMedication"
+                android:text="Medication"
+                android:gravity="bottom|center"
+                android:paddingBottom="30dp"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:background="@drawable/tile"
+                android:layout_weight="1" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:weightSum="3" >
+    <android.support.design.widget.FloatingActionButton
 
-        <ImageButton
-            android:id="@+id/btnHistory"
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:layout_weight="1" />
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:src="@drawable/icon_big_nfc"
+        app:layout_anchor="@id/parent"
+        app:layout_anchorGravity="bottom|right|end"/>
+</android.support.design.widget.CoordinatorLayout>
 
-        <ImageButton
-            android:id="@+id/btnMedication"
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:layout_weight="1" />
-
-    </LinearLayout>
-
-</LinearLayout>
-<!--
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.lifeband.lifeband.MainActivity">
-
-    <Button
-        android:id="@+id/btnInformation"
-        android:layout_width="158dp"
-        android:layout_height="116dp"
-        android:text="none"
-        tools:layout_editor_absoluteX="210dp"
-        tools:layout_editor_absoluteY="155dp" />
-    &lt;!&ndash;
-        <Button
-            android:id="@+id/btnEmergencyContact"
-            android:layout_width="158dp"
-            android:layout_height="116dp"
-            android:text="none"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="7dp" />
-
-        <Button
-            android:id="@+id/btnHistory"
-            android:layout_width="158dp"
-            android:layout_height="116dp"
-            android:text="none"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="155dp" />
-
-        <Button
-            android:id="@+id/btnMedication"
-            android:layout_width="158dp"
-            android:layout_height="116dp"
-            android:text="none"
-            tools:layout_editor_absoluteX="210dp"
-            tools:layout_editor_absoluteY="7dp" />&ndash;&gt;
-</android.support.constraint.ConstraintLayout>-->
