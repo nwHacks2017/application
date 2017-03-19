@@ -93,10 +93,6 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent();
-                Bundle b = new Bundle();
-                b.putParcelable("birth", patientData.getInformation().getBirth());
-                b.putParcelable("id", patientData.getInformation());
-                i.putExtras(b);
                 i.setClass(getApplicationContext(), InformationActivity.class);
                 startActivity(i);
                 //makeSampleHttpRequest();
@@ -106,6 +102,10 @@ public class MainActivity extends Activity {
         btnEmergencyContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent i = new Intent();
+                i.setClass(getApplicationContext(), EmergencyContact.class);
+                startActivity(i);
+
  /*               Intent i = new Intent();
                 Bundle b = new Bundle();
                 b.putParcelable(Constants.CUSTOM_LISTING, currentListing);
@@ -119,6 +119,9 @@ public class MainActivity extends Activity {
         btnHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent i = new Intent();
+                i.setClass(getApplicationContext(), HistoryActivity.class);
+                startActivity(i);
         /*        CustomListing currentListing = new CustomListing();
                 Intent i = new Intent();
                 Bundle b = new Bundle();
@@ -133,6 +136,9 @@ public class MainActivity extends Activity {
         btnMedication.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent i = new Intent();
+                i.setClass(getApplicationContext(), MedicationActivity.class);
+                startActivity(i);
      /*           Intent i = new Intent();
                 Bundle b = new Bundle();
                 b.putParcelable("", data);

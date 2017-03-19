@@ -3,4 +3,5 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_emergency_contact">EmergencyContact</string>
     <string name="title_activity_medication">MedicationActivity</string>
+    <string name="title_activity_history">HistoryActivity</string>
 </resources>

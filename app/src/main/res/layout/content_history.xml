@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
-                android:text="Patient emergency contacts - Carlson Chan"/>
+                android:text="Patient history - Carlson Chan"/>
 
         </LinearLayout>
     </LinearLayout>
@@ -68,8 +68,7 @@
                 android:id="@+id/text3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="25dp"
-                android:text="Contact: Bradly Chan\nPhone: 604-555-666\n"/>
+                android:text="Last Doctors visit: 1920-09-16\n"/>
         </LinearLayout>
 
     </LinearLayout>
