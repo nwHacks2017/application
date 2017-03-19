@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4C92CE"
+
+    tools:context="com.lifeband.lifeband.NFCActivity">
+
+
+    <ImageView
+        android:id="@+id/rotator"
+        android:layout_width="224dp"
+        android:layout_height="261dp"
+        app:srcCompat="@drawable/icon_big_nfc"
+        tools:layout_editor_absoluteX="80dp"
+        tools:layout_editor_absoluteY="125dp" />
+</android.support.constraint.ConstraintLayout>
