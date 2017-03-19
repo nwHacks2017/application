@@ -1,4 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#4C92CE"
+    android:weightSum="3" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="3" >
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:id="@+id/btnInformation" />
+
+        <ImageButton
+            android:id="@+id/btnEmergencyContact"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/btnHistory"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="3" >
+
+        <ImageButton
+            android:id="@+id/btnMedication"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+</LinearLayout>
+<!--
+<?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -13,7 +64,7 @@
         android:text="none"
         tools:layout_editor_absoluteX="210dp"
         tools:layout_editor_absoluteY="155dp" />
-    <!--
+    &lt;!&ndash;
         <Button
             android:id="@+id/btnEmergencyContact"
             android:layout_width="158dp"
@@ -36,5 +87,5 @@
             android:layout_height="116dp"
             android:text="none"
             tools:layout_editor_absoluteX="210dp"
-            tools:layout_editor_absoluteY="7dp" />-->
-</android.support.constraint.ConstraintLayout>
+            tools:layout_editor_absoluteY="7dp" />&ndash;&gt;
+</android.support.constraint.ConstraintLayout>-->

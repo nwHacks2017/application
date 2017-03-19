@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -39,7 +40,7 @@ import java.util.List;
 
 public class MainActivity extends Activity {
 
-    private Button mTrigger;
+    private ImageButton mTrigger;
     private RequestQueue mVolleyQueue;
     private ListView mListView;
     private ProgressDialog mProgress;
@@ -81,10 +82,10 @@ public class MainActivity extends Activity {
         makeSampleHttpRequest();
         System.out.println("After request");
 
-        Button btnInformation= (Button) findViewById(R.id.btnInformation);/*
-        Button btnEmergencyContact= (Button) findViewById(R.id.btnEmergencyContact);
-        Button btnHistory= (Button) findViewById(R.id.btnHistory);
-        Button btnMedication= (Button) findViewById(R.id.btnMedication);*/
+        ImageButton btnInformation= (ImageButton) findViewById(R.id.btnInformation);/*
+        ImageButton btnEmergencyContact= (ImageButton) findViewById(R.id.btnEmergencyContact);
+        ImageButton btnHistory= (ImageButton) findViewById(R.id.btnHistory);
+        ImageButton btnMedication= (ImageButton) findViewById(R.id.btnMedication);*/
         showToast("Sent");
 
         btnInformation.setOnClickListener(new View.OnClickListener() {
@@ -132,7 +133,7 @@ public class MainActivity extends Activity {
 
     private void makeSampleHttpRequest() {
 
-        String url = "http://ec2-52-26-139-171.us-west-2.compute.amazonaws.com:8787";
+        String url = "http://ec2-52-26-139-171.us-west-2.compute.amazonaws.com:8080";
         Uri.Builder builder = Uri.parse(url).buildUpon();
         builder.appendPath("patient");
         builder.appendPath("M83Y2uPNX5p4zgBUTCV0");
@@ -146,6 +147,8 @@ public class MainActivity extends Activity {
                     System.out.println("got a response");
                     System.out.println(response.toString());
                     patientData = PatientData.fromJsonObject(response);
+                    System.out.println(patientData.getInformation().getFullName());
+                    showToast(patientData.getInformation().getFullName());
 
                 } catch (Exception e) {
                     e.printStackTrace();
