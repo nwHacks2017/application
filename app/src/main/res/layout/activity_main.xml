@@ -7,34 +7,34 @@
     tools:context="com.lifeband.lifeband.MainActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnInformation"
         android:layout_width="158dp"
         android:layout_height="116dp"
-        android:text="Button"
+        android:text="none"
         tools:layout_editor_absoluteX="210dp"
         tools:layout_editor_absoluteY="155dp" />
+    <!--
+        <Button
+            android:id="@+id/btnEmergencyContact"
+            android:layout_width="158dp"
+            android:layout_height="116dp"
+            android:text="none"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="7dp" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="158dp"
-        android:layout_height="116dp"
-        android:text="Button"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="7dp" />
+        <Button
+            android:id="@+id/btnHistory"
+            android:layout_width="158dp"
+            android:layout_height="116dp"
+            android:text="none"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="155dp" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="158dp"
-        android:layout_height="116dp"
-        android:text="Button"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="155dp" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="158dp"
-        android:layout_height="116dp"
-        android:text="Button"
-        tools:layout_editor_absoluteX="210dp"
-        tools:layout_editor_absoluteY="7dp" />
+        <Button
+            android:id="@+id/btnMedication"
+            android:layout_width="158dp"
+            android:layout_height="116dp"
+            android:text="none"
+            tools:layout_editor_absoluteX="210dp"
+            tools:layout_editor_absoluteY="7dp" />-->
 </android.support.constraint.ConstraintLayout>

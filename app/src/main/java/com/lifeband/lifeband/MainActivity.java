@@ -63,33 +63,50 @@ public class MainActivity extends Activity {
 
     }
 
-
-
     JsonObjectRequest jsonObjRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
+        patientData = null;
         // Initialise Volley Request Queue.
         mVolleyQueue = Volley.newRequestQueue(this);
 
-        int max_cache_size = 1000000;
 
-        //Memory cache is always faster than DiskCache. Check it our for yourself.
+        System.out.println("Before request");
+
+
+        showProgress();
+        makeSampleHttpRequest();
+        System.out.println("After request");
+
+        Button btnInformation= (Button) findViewById(R.id.btnInformation);/*
+        Button btnEmergencyContact= (Button) findViewById(R.id.btnEmergencyContact);
+        Button btnHistory= (Button) findViewById(R.id.btnHistory);
+        Button btnMedication= (Button) findViewById(R.id.btnMedication);*/
+        showToast("Sent");
+
+        btnInformation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                makeSampleHttpRequest();
+            }
+        });
+
+      /*  while(patientData == null){
+
+        }
+
+        btnInformation.setText(patientData.getId());*/
+
+
+                //Memory cache is always faster than DiskCache. Check it our for yourself.
         //mImageLoader = new ImageLoader(mVolleyQueue, new BitmapCache(max_cache_size));
 
         mDataList = new ArrayList<DataModel>();
 
-        mTrigger.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showProgress();
-                makeSampleHttpRequest();
-            }
-        });
     }
 
 
@@ -117,15 +134,19 @@ public class MainActivity extends Activity {
 
         String url = "http://ec2-52-26-139-171.us-west-2.compute.amazonaws.com:8787";
         Uri.Builder builder = Uri.parse(url).buildUpon();
-        builder.appendPath("patients");
-        builder.appendQueryParameter("tagId", "tmp");
+        builder.appendPath("patient");
+        builder.appendPath("M83Y2uPNX5p4zgBUTCV0");
 
-
+        System.out.println(builder.toString());
         jsonObjRequest = new JsonObjectRequest(Request.Method.GET, builder.toString(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
+                    showToast("got a response");
+                    System.out.println("got a response");
+                    System.out.println(response.toString());
                     patientData = PatientData.fromJsonObject(response);
+
                 } catch (Exception e) {
                     e.printStackTrace();
                     showToast("JSON parse error");

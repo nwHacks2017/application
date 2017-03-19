@@ -1,13 +1,12 @@
 package com.lifeband.lifeband;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * Created by octavian13 on 3/19/17.
- */
-
-public class PatientData {
+public class PatientData implements Parcelable{
     private String id;
     private Information information;
     private EmergencyContact emergencyContact;
@@ -72,7 +71,17 @@ public class PatientData {
         return p;
     }
 
-    public static class Information {
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.getId());
+    }
+
+    public static class Information  implements Parcelable {
         private String fullName;
         private String gender;
         private String address;
@@ -110,7 +119,19 @@ public class PatientData {
             this.birth = birth;
         }
 
-        public static class Date {
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeString(getFullName());
+            dest.writeString(getGender());
+            dest.writeString(getAddress());
+        }
+
+        public static class Date implements Parcelable {
             private String day;
             private String month;
             private String year;
@@ -138,10 +159,22 @@ public class PatientData {
             public void setYear(String year) {
                 this.year = year;
             }
+
+            @Override
+            public int describeContents() {
+                return 0;
+            }
+
+            @Override
+            public void writeToParcel(Parcel dest, int flags) {
+                dest.writeString(getDay());
+                dest.writeString(getMonth());
+                dest.writeString(getYear());
+            }
         }
     }
 
-    public static class EmergencyContact {
+    public static class EmergencyContact implements Parcelable {
         private String fullName;
         private String phone;
 
@@ -159,6 +192,17 @@ public class PatientData {
 
         public void setPhone(String phone) {
             this.phone = phone;
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeString(getFullName());
+            dest.writeString(getPhone());
         }
     }
 }
