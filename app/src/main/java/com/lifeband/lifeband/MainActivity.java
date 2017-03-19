@@ -269,7 +269,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showProgress() {
-        mProgress = ProgressDialog.show(this, "", "Loading...");
+        mProgress = ProgressDialog.show(this, "", "splash...");
     }
 
     private void stopProgress() {
