@@ -44,8 +44,8 @@ public class PatientData implements Parcelable{
         if (object.has("information")) {
             p.setInformation(new PatientData.Information());
             JSONObject informationJson = object.getJSONObject("information");
-            if (informationJson.has("fullName")) {
-                p.getInformation().setFullName(informationJson.getString("fullName"));
+            if (informationJson.has("fullname")) {
+                p.getInformation().setFullName(informationJson.getString("fullname"));
             }
             if (informationJson.has("gender")) {
                 p.getInformation().setGender(informationJson.getString("gender"));
