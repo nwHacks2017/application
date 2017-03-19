@@ -3,8 +3,13 @@ package com.lifeband.lifeband;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
+import android.nfc.NfcAdapter;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,29 +43,34 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
-    private ImageButton mTrigger;
+
     private RequestQueue mVolleyQueue;
-    private ListView mListView;
+    private TextView textView;
+
     private ProgressDialog mProgress;
     private List<DataModel> mDataList;
 
     private ImageLoader mImageLoader;
+
+    private NfcAdapter nfcAdapter;
+    private NfcReader nfcReader;
 
     private PatientData patientData;
 
     private final String TAG_REQUEST = "MY_TAG";
 
     private class DataModel {
-        private String mImageUrl;
+
         private String mTitle;
-        public String getTitle() {
-            return mTitle;
-        }
-        public void setTitle(String mTitle) {
-            this.mTitle = mTitle;
-        }
+
+
+    }
+
+    public MainActivity(){
+        super();
+
 
     }
 
@@ -70,6 +80,14 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Initialize NFC Adapter
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.apptoolbar);
+        myToolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(myToolbar);
+
+
+
         patientData = null;
         // Initialise Volley Request Queue.
         mVolleyQueue = Volley.newRequestQueue(this);
@@ -83,9 +101,8 @@ public class MainActivity extends Activity {
         System.out.println("After request");
 
         ImageButton btnInformation= (ImageButton) findViewById(R.id.btnInformation);/*
-        ImageButton btnEmergencyContact= (ImageButton) findViewById(R.id.btnEmergencyContact);
-        ImageButton btnHistory= (ImageButton) findViewById(R.id.btnHistory);
-        ImageButton btnMedication= (ImageButton) findViewById(R.id.btnMedication);*/
+
+
         showToast("Sent");
 
         btnInformation.setOnClickListener(new View.OnClickListener() {
@@ -195,6 +212,8 @@ public class MainActivity extends Activity {
     private void showToast(String msg) {
         Toast.makeText(MainActivity.this, msg, Toast.LENGTH_LONG).show();
     }
+
+
 
 }
 

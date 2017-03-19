@@ -16,4 +16,12 @@
         app:srcCompat="@drawable/icon_big_nfc"
         tools:layout_editor_absoluteX="80dp"
         tools:layout_editor_absoluteY="125dp" />
+
+    <TextView
+        android:id="@+id/testingNfc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="162dp"
+        tools:layout_editor_absoluteY="415dp" />
 </android.support.constraint.ConstraintLayout>
