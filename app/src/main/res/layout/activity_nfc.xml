@@ -13,7 +13,7 @@
     android:background="#4C92CE"
     android:gravity="center_vertical|center_horizontal"
     android:orientation="vertical"
-    tools:context="com.lifeband.lifeband.NFCActivity">
+    tools:context="com.lifeband.lifeband.NfcActivity">
 
 
     <ImageView

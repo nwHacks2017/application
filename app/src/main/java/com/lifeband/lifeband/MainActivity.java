@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i  = new Intent(con, NFCActivity.class);
+                Intent i  = new Intent(con, NfcActivity.class);
                 startActivity(i);
 
             }

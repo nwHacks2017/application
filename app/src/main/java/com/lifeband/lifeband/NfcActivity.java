@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class NFCActivity extends AppCompatActivity {
+public class NfcActivity extends AppCompatActivity {
     private static final float ROTATE_FROM = 0.0f;
     private static final float ROTATE_TO = -10.0f * 360.0f;// 3.141592654f * 32.0f;
 
@@ -19,7 +19,7 @@ public class NFCActivity extends AppCompatActivity {
     private NfcReader nfcReader;
     private TextView textview;
 
-    public NFCActivity(){
+    public NfcActivity(){
         super();
         nfcReader = new NfcReader();
 
