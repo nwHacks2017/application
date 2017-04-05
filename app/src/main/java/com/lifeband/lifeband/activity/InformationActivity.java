@@ -1,4 +1,4 @@
-package com.lifeband.lifeband;
+package com.lifeband.lifeband.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

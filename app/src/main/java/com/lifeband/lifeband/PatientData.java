@@ -185,7 +185,7 @@ public class PatientData implements Parcelable{
         public void setFullName(String fullName) {
             this.fullName = fullName;
         }
-
+g
         public String getPhone() {
             return phone;
         }

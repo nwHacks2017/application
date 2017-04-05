@@ -1,4 +1,4 @@
-package com.lifeband.lifeband;
+package com.lifeband.lifeband.activity;
 
 
 import android.app.ProgressDialog;
@@ -31,6 +31,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.lifeband.lifeband.NfcReader;
+import com.lifeband.lifeband.PatientData;
+import com.lifeband.lifeband.R;
 
 import org.json.JSONObject;
 

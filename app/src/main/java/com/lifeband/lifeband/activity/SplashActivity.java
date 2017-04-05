@@ -1,4 +1,4 @@
-package com.lifeband.lifeband;
+package com.lifeband.lifeband.activity;
 
 /**
  * Created by Eul on 2017-03-19.
@@ -8,6 +8,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.lifeband.lifeband.R;
 
 public class SplashActivity extends Activity {
 

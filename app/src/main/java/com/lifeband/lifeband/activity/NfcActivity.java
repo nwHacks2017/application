@@ -1,4 +1,4 @@
-package com.lifeband.lifeband;
+package com.lifeband.lifeband.activity;
 
 import android.content.Intent;
 import android.nfc.NfcAdapter;
@@ -10,6 +10,9 @@ import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.lifeband.lifeband.NfcReader;
+import com.lifeband.lifeband.R;
 
 public class NfcActivity extends AppCompatActivity {
     private static final float ROTATE_FROM = 0.0f;
