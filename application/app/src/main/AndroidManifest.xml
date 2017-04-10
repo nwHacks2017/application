@@ -10,18 +10,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
-
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".activity.NfcActivity">
-
-        </activity>
-
 
         <activity
             android:name=".activity.MainActivity"
             android:label="Lifeband"
             android:theme="@style/AppTheme.NoActionBar">
-
 
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
@@ -39,26 +33,33 @@
             <meta-data android:name="android.nfc.action.TECH_DISCOVERED"
                 android:resource="@xml/nfc_tech_filter" />
         </activity>
-        <activity android:name=".activity.InformationActivity" />
+        <activity android:name=".activity.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activity.NfcActivity"
+            android:label="@string/title_activity_nfc"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.InformationActivity"
+            android:label="@string/title_activity_information"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.EmergencyContactActivity"
             android:label="@string/title_activity_emergency_contact"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.MedicationActivity"
-            android:label="@string/title_activity_medication"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".activity.HistoryActivity"
             android:label="@string/title_activity_history"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".activity.SplashActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity
+            android:name=".activity.MedicationActivity"
+            android:label="@string/title_activity_medication"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
