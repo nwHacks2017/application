@@ -1,8 +1,9 @@
 package com.lifeband.lifeband.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Window;
+import android.support.v7.app.AppCompatActivity;
+
+import com.lifeband.lifeband.R;
 
 public class InformationActivity extends AppCompatActivity {
 
