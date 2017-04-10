@@ -7,9 +7,43 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class PatientData implements Parcelable{
+
     private String id;
     private Information information;
     private EmergencyContact emergencyContact;
+
+    public PatientData() {
+    }
+
+    public PatientData(Parcel p) {
+        id = p.readString();
+        information = p.readParcelable(Information.class.getClassLoader());
+        emergencyContact = p.readParcelable(EmergencyContact.class.getClassLoader());
+    }
+
+    public static final Creator<PatientData> CREATOR = new Creator<PatientData>() {
+        @Override
+        public PatientData createFromParcel(Parcel p) {
+            return new PatientData(p);
+        }
+
+        @Override
+        public PatientData[] newArray(int size) {
+            return new PatientData[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel p, int flags) {
+        p.writeString(id);
+        p.writeParcelable(information, flags);
+        p.writeParcelable(emergencyContact, flags);
+    }
 
     public String getId() {
         return id;
@@ -71,21 +105,47 @@ public class PatientData implements Parcelable{
         return p;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.getId());
-    }
-
     public static class Information  implements Parcelable {
+
         private String fullName;
         private String gender;
         private String address;
         private Date birth;
+
+        public Information() {
+        }
+
+        public Information(Parcel p) {
+            fullName = p.readString();
+            gender = p.readString();
+            address = p.readString();
+            birth = p.readParcelable(Date.class.getClassLoader());
+        }
+
+        public static final Creator<Information> CREATOR = new Creator<Information>() {
+            @Override
+            public Information createFromParcel(Parcel p) {
+                return new Information(p);
+            }
+
+            @Override
+            public Information[] newArray(int size) {
+                return new Information[size];
+            }
+        };
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel p, int flags) {
+            p.writeString(getFullName());
+            p.writeString(getGender());
+            p.writeString(getAddress());
+            p.writeParcelable(birth, flags);
+        }
 
         public String getFullName() {
             return fullName;
@@ -119,22 +179,44 @@ public class PatientData implements Parcelable{
             this.birth = birth;
         }
 
-        @Override
-        public int describeContents() {
-            return 0;
-        }
-
-        @Override
-        public void writeToParcel(Parcel dest, int flags) {
-            dest.writeString(getFullName());
-            dest.writeString(getGender());
-            dest.writeString(getAddress());
-        }
-
         public static class Date implements Parcelable {
+
             private String day;
             private String month;
             private String year;
+
+            public Date() {
+            }
+
+            public Date(Parcel p) {
+                day = p.readString();
+                month = p.readString();
+                year = p.readString();
+            }
+
+            public static final Creator<Date> CREATOR = new Creator<Date>() {
+                @Override
+                public Date createFromParcel(Parcel p) {
+                    return new Date(p);
+                }
+
+                @Override
+                public Date[] newArray(int size) {
+                    return new Date[size];
+                }
+            };
+
+            @Override
+            public void writeToParcel(Parcel p, int flags) {
+                p.writeString(getDay());
+                p.writeString(getMonth());
+                p.writeString(getYear());
+            }
+
+            @Override
+            public int describeContents() {
+                return 0;
+            }
 
             public String getDay() {
                 return day;
@@ -160,23 +242,44 @@ public class PatientData implements Parcelable{
                 this.year = year;
             }
 
-            @Override
-            public int describeContents() {
-                return 0;
-            }
-
-            @Override
-            public void writeToParcel(Parcel dest, int flags) {
-                dest.writeString(getDay());
-                dest.writeString(getMonth());
-                dest.writeString(getYear());
-            }
         }
     }
 
     public static class EmergencyContact implements Parcelable {
+
         private String fullName;
         private String phone;
+
+        public EmergencyContact() {
+        }
+
+        public EmergencyContact(Parcel p) {
+            fullName = p.readString();
+            phone = p.readString();
+        }
+
+        public static final Creator<EmergencyContact> CREATOR = new Creator<EmergencyContact>() {
+            @Override
+            public EmergencyContact createFromParcel(Parcel p) {
+                return new EmergencyContact(p);
+            }
+
+            @Override
+            public EmergencyContact[] newArray(int size) {
+                return new EmergencyContact[size];
+            }
+        };
+
+        @Override
+        public void writeToParcel(Parcel p, int flags) {
+            p.writeString(getFullName());
+            p.writeString(getPhone());
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
 
         public String getFullName() {
             return fullName;
@@ -192,17 +295,6 @@ public class PatientData implements Parcelable{
 
         public void setPhone(String phone) {
             this.phone = phone;
-        }
-
-        @Override
-        public int describeContents() {
-            return 0;
-        }
-
-        @Override
-        public void writeToParcel(Parcel dest, int flags) {
-            dest.writeString(getFullName());
-            dest.writeString(getPhone());
         }
     }
 }
