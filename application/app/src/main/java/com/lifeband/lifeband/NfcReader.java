@@ -19,7 +19,7 @@ public class NfcReader {
 
     private static final String TAG = NfcReader.class.getSimpleName();
 
-    public void instantiateNfcAdapter(Context context) throws NfcException {
+    public static void instantiateNfcAdapter(Context context) throws NfcException {
         NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(context);
         if(nfcAdapter == null) {
             throw new NfcException(NfcException.Reason.NOT_SUPPORTED);
@@ -29,7 +29,7 @@ public class NfcReader {
         }
     }
 
-    public String readTagFromIntent(Intent intent) throws NfcException {
+    public static String readTagFromIntent(Intent intent) throws NfcException {
         String action = intent.getAction();
         Log.d(TAG, "Received intent with action [" + action + "]");
 
@@ -61,7 +61,7 @@ public class NfcReader {
         }
     }
 
-    private String readParcelableTag(Tag parcelableTag) throws NfcException {
+    private static String readParcelableTag(Tag parcelableTag) throws NfcException {
         Ndef ndefTag = Ndef.get(parcelableTag);
         if(ndefTag == null) {
             throw new NfcException(NfcException.Reason.INVALID_TAG_TYPE);
@@ -88,9 +88,9 @@ public class NfcReader {
      *
      * @param ndefRecord
      * @return
-     * @throws UnsupportedEncodingException
+     * @throws NfcException
      */
-    private String readTagText(NdefRecord ndefRecord) throws NfcException {
+    private static String readTagText(NdefRecord ndefRecord) throws NfcException {
         Log.d(TAG, "Reading NDEF record from tag payload");
 
         byte[] payload = ndefRecord.getPayload();

@@ -19,14 +19,10 @@ public class NfcActivity extends AppCompatActivity {
     private static final float ROTATE_FROM = 0.0f;
     private static final float ROTATE_TO = -10.0f * 360.0f;// 3.141592654f * 32.0f;
 
-    private NfcAdapter nfcAdapter;
-    private NfcReader nfcReader;
     private TextView textview;
 
     public NfcActivity(){
         super();
-        nfcReader = new NfcReader();
-
     }
 
     @Override
@@ -34,7 +30,7 @@ public class NfcActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         try {
-            nfcReader.instantiateNfcAdapter(this);
+            NfcReader.instantiateNfcAdapter(this);
         }
         catch(NfcException e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
@@ -61,10 +57,6 @@ public class NfcActivity extends AppCompatActivity {
         splash.setAnimation(null);*/
     }
 
-    void nfcMonitor(){
-        //todo get nfc working
-    }
-
     @Override
     protected void onNewIntent(Intent intent) {
         readTagDataTo(textview);
@@ -76,7 +68,7 @@ public class NfcActivity extends AppCompatActivity {
     private void readTagDataTo(TextView textView) {
         String data;
         try {
-            data = nfcReader.readTagFromIntent(getIntent());
+            data = NfcReader.readTagFromIntent(getIntent());
         }
         catch(NfcException e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
