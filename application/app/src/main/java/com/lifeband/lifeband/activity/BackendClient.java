@@ -1,6 +1,5 @@
 package com.lifeband.lifeband.activity;
 
-import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
 
@@ -9,18 +8,16 @@ import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkError;
 import com.android.volley.NoConnectionError;
 import com.android.volley.ParseError;
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-import com.lifeband.lifeband.PatientData;
 
-import org.json.JSONException;
 import org.json.JSONObject;
+
+import static com.lifeband.lifeband.LifebandExceptions.ServerException;
 
 public class BackendClient {
 
@@ -110,49 +107,6 @@ public class BackendClient {
     private void clearTmpVars() {
         tmpReturnObject = null;
         tmpException = null;
-    }
-
-    public static class ServerException extends Exception {
-
-        private Reason reason;
-        private String details;
-
-        public ServerException(Reason reason) {
-            super();
-            this.reason = reason;
-        }
-
-        public ServerException(Reason reason, String details) {
-            this(reason);
-            this.details = details;
-        }
-
-        public Reason getReason() {
-            return reason;
-        }
-
-        @Override
-        public String getMessage() {
-            if(details != null) {
-                return reason.getText() + ": " + details;
-            }
-            return reason.getText();
-        }
-
-        public static enum Reason {
-            PARSE_JSON_FAILURE("Failed to parse JSON response from server"),
-            UNHANDLED_ERROR("Unhandled error");
-
-            private String text;
-
-            private Reason(String text) {
-                this.text = text;
-            }
-
-            public String getText() {
-                return text;
-            }
-        }
     }
 
 }
