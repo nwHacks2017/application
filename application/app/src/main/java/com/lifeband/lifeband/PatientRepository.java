@@ -4,7 +4,6 @@ import android.net.Uri;
 import android.util.Log;
 
 import com.android.volley.Request;
-import com.lifeband.lifeband.activity.BackendClient;
 import com.lifeband.lifeband.exception.ServerException;
 
 import org.json.JSONException;

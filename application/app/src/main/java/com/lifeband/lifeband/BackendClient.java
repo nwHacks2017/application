@@ -1,4 +1,4 @@
-package com.lifeband.lifeband.activity;
+package com.lifeband.lifeband;
 
 import android.net.Uri;
 import android.util.Log;
