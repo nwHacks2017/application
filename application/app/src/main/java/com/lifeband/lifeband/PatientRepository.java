@@ -16,8 +16,8 @@ public class PatientRepository {
 
     private BackendClient backendClient;
 
-    public PatientRepository(Context context) {
-        backendClient = new BackendClient(context);
+    public PatientRepository(BackendClient backendClient) {
+        this.backendClient = backendClient;
     }
 
     public PatientData getPatientById(String id) throws BackendClient.ServerException {

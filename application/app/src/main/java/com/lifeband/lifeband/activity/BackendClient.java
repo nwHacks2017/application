@@ -33,8 +33,8 @@ public class BackendClient {
     private ServerException tmpException;
     private JSONObject tmpReturnObject;
 
-    public BackendClient(Context context) {
-        requestQueue = Volley.newRequestQueue(context);
+    public BackendClient(RequestQueue requestQueue) {
+        this.requestQueue = requestQueue;
     }
 
     public static Uri.Builder getBaseUrl() {
