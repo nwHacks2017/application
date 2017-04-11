@@ -7,7 +7,7 @@ import android.nfc.Tag;
 import android.nfc.tech.Ndef;
 import android.util.Log;
 
-import com.lifeband.lifeband.exception.NfcReadFailureException;
+import com.lifeband.lifeband.exception.NfcException;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
@@ -16,7 +16,7 @@ public class NfcReader {
 
     private static final String TAG = NfcReader.class.getSimpleName();
 
-    public String readTagFromIntent(Intent intent) throws NfcReadFailureException {
+    public String readTagFromIntent(Intent intent) throws NfcException {
         String action = intent.getAction();
         Log.d(TAG, "Received intent with action [" + action + "]");
 
@@ -32,8 +32,8 @@ public class NfcReader {
                     return readParcelableTag((Tag) intent.getParcelableExtra(NfcAdapter.EXTRA_TAG));
                 }
                 else {
-                    throw new NfcReadFailureException(
-                            NfcReadFailureException.Reason.INVALID_CONTENT_TYPE
+                    throw new NfcException(
+                            NfcException.Reason.INVALID_CONTENT_TYPE
                     );
                 }
             case NfcAdapter.ACTION_TECH_DISCOVERED:
@@ -44,14 +44,14 @@ public class NfcReader {
                     }
                 }
             default:
-                throw new NfcReadFailureException(NfcReadFailureException.Reason.INVALID_TAG_TYPE);
+                throw new NfcException(NfcException.Reason.INVALID_TAG_TYPE);
         }
     }
 
-    private String readParcelableTag(Tag parcelableTag) throws NfcReadFailureException {
+    private String readParcelableTag(Tag parcelableTag) throws NfcException {
         Ndef ndefTag = Ndef.get(parcelableTag);
         if(ndefTag == null) {
-            throw new NfcReadFailureException(NfcReadFailureException.Reason.INVALID_TAG_TYPE);
+            throw new NfcException(NfcException.Reason.INVALID_TAG_TYPE);
         }
 
         NdefRecord extractedRecord = null;
@@ -77,7 +77,7 @@ public class NfcReader {
      * @return
      * @throws UnsupportedEncodingException
      */
-    private String readTagText(NdefRecord ndefRecord) throws NfcReadFailureException {
+    private String readTagText(NdefRecord ndefRecord) throws NfcException {
         Log.d(TAG, "Reading NDEF record from tag payload");
 
         byte[] payload = ndefRecord.getPayload();
@@ -94,7 +94,7 @@ public class NfcReader {
             );
         }
         catch(UnsupportedEncodingException e) {
-            throw new NfcReadFailureException(NfcReadFailureException.Reason.INVALID_ENCODING);
+            throw new NfcException(NfcException.Reason.INVALID_ENCODING);
         }
 
         Log.d(TAG, "Parsed tag data: [" + data + "]");

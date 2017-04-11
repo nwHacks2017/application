@@ -1,10 +1,10 @@
 package com.lifeband.lifeband.exception;
 
-public class NfcReadFailureException extends LifebandException {
+public class NfcException extends LifebandException {
 
     private Reason reason;
 
-    public NfcReadFailureException(Reason reason) {
+    public NfcException(Reason reason) {
         super();
         this.reason = reason;
     }
