@@ -1,11 +1,14 @@
 package com.lifeband.lifeband;
 
+import android.content.Context;
 import android.content.Intent;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.nfc.tech.Ndef;
+import android.nfc.tech.NfcA;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.lifeband.lifeband.exception.NfcException;
 
@@ -15,6 +18,16 @@ import java.util.Arrays;
 public class NfcReader {
 
     private static final String TAG = NfcReader.class.getSimpleName();
+
+    public void instantiateNfcAdapter(Context context) throws NfcException {
+        NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(context);
+        if(nfcAdapter == null) {
+            throw new NfcException(NfcException.Reason.NOT_SUPPORTED);
+        }
+        else if(!nfcAdapter.isEnabled()) {
+            throw new NfcException(NfcException.Reason.NOT_ENABLED);
+        }
+    }
 
     public String readTagFromIntent(Intent intent) throws NfcException {
         String action = intent.getAction();

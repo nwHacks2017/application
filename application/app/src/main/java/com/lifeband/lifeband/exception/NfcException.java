@@ -19,6 +19,8 @@ public class NfcException extends LifebandException {
     }
 
     public static enum Reason {
+        NOT_SUPPORTED("NFC is not supported on this device"),
+        NOT_ENABLED("Please enable NFC on your device"),
         INVALID_TAG_TYPE("Invalid tag type; NDEF is required"),
         INVALID_CONTENT_TYPE("Invalid content type; text/plain is required"),
         INVALID_ENCODING("Invalid text encoding");

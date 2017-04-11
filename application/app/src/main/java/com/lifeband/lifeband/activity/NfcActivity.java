@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.lifeband.lifeband.NfcReader;
 import com.lifeband.lifeband.R;
+import com.lifeband.lifeband.exception.NfcException;
 
 public class NfcActivity extends AppCompatActivity {
     private static final float ROTATE_FROM = 0.0f;
@@ -32,7 +33,14 @@ public class NfcActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (!instantiateNfcAdapter()){
+        try {
+            nfcReader.instantiateNfcAdapter(this);
+        }
+        catch(NfcException e) {
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+            if(e.getReason().equals(NfcException.Reason.NOT_SUPPORTED)) {
+                finish();
+            }
             return;
         }
         
@@ -65,26 +73,13 @@ public class NfcActivity extends AppCompatActivity {
         //
     }
 
-    private boolean instantiateNfcAdapter() {
-        nfcAdapter = NfcAdapter.getDefaultAdapter(this);
-        if(nfcAdapter == null) {
-            Toast.makeText(this, "NFC is not supported on this device.", Toast.LENGTH_LONG).show();
-            finish();
-            return false;
-        }
-        else if(!nfcAdapter.isEnabled()) {
-            Toast.makeText(this, "Please enable NFC on your device.", Toast.LENGTH_LONG).show();
-        }
-        return true;
-    }
-
     private void readTagDataTo(TextView textView) {
         String data;
         try {
             data = nfcReader.readTagFromIntent(getIntent());
         }
-        catch(Exception e) {
-            Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();
+        catch(NfcException e) {
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
             return;
         }
         if(data != null) {
