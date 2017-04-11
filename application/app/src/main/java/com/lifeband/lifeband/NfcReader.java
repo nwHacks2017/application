@@ -1,12 +1,13 @@
 package com.lifeband.lifeband;
 
-
 import android.content.Intent;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.nfc.tech.Ndef;
 import android.util.Log;
+
+import com.lifeband.lifeband.exception.NfcReadFailureException;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
