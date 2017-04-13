@@ -19,7 +19,7 @@ public class NfcReader {
 
     private static final String TAG = NfcReader.class.getSimpleName();
 
-    public static void instantiateNfcAdapter(Context context) throws NfcException {
+    public static NfcAdapter getNfcAdapter(Context context) throws NfcException {
         NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(context);
         if(nfcAdapter == null) {
             throw new NfcException(NfcException.Reason.NOT_SUPPORTED);
@@ -27,6 +27,7 @@ public class NfcReader {
         else if(!nfcAdapter.isEnabled()) {
             throw new NfcException(NfcException.Reason.NOT_ENABLED);
         }
+        return nfcAdapter;
     }
 
     public static String readTagFromIntent(Intent intent) throws NfcException {

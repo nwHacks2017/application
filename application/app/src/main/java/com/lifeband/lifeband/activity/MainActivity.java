@@ -108,8 +108,6 @@ public class MainActivity extends AppCompatActivity {
         Button btnHistory= (Button) findViewById(R.id.btnHistory);
         Button btnMedication= (Button) findViewById(R.id.btnMedication);
 
-        showToast("Sent");
-
         btnInformation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -183,8 +181,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-
     public void onDestroy() {
         super.onDestroy();
     }
@@ -204,11 +200,4 @@ public class MainActivity extends AppCompatActivity {
         //mVolleyQueue.cancelAll(TAG_REQUEST);
     }
 
-    private void showToast(String msg) {
-        Toast.makeText(MainActivity.this, msg, Toast.LENGTH_LONG).show();
-    }
-
-
-
 }
-
