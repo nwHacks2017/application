@@ -62,7 +62,7 @@ public class NfcActivity extends AppCompatActivity {
                 new String[]{NfcA.class.getName()},
                 new String[]{NfcB.class.getName()}
         };
-        
+
 
         setContentView(R.layout.activity_nfc);
 /*        RotateAnimation anim =  new RotateAnimation(30, 90,
@@ -82,13 +82,17 @@ public class NfcActivity extends AppCompatActivity {
     @Override
     public void onPause() {
         super.onPause();
-        nfcAdapter.disableForegroundDispatch(this);
+        if(nfcAdapter != null) {
+            nfcAdapter.disableForegroundDispatch(this);
+        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        nfcAdapter.enableForegroundDispatch(this, pendingIntent, intentFilters, nfcTechList);
+        if(nfcAdapter != null) {
+            nfcAdapter.enableForegroundDispatch(this, pendingIntent, intentFilters, nfcTechList);
+        }
     }
 
     @Override
