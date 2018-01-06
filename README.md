@@ -1,5 +1,7 @@
 # Luminescence: Lifeband Application (nwHacks 2017)
 
+[![Build Status](https://travis-ci.org/nwHacks2017/application.svg?branch=master)](https://travis-ci.org/nwHacks2017/application)
+
 Android application which supplies patient data to doctors.
 
 ## Setup
