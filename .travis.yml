@@ -1,6 +1,9 @@
 language: android
+
 android:
   components:
     - tools
     - platform-tools
     - tools
+    
+script: cd application/ && ./gradlew build app
