@@ -6,4 +6,4 @@ android:
     - platform-tools
     - tools
     
-script: cd application/ && ./gradlew build app
+install: cd application/ && ./gradlew build app
