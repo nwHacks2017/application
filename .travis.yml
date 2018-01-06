@@ -12,4 +12,4 @@ android:
     - 'google-gdk-license-.+'
 
 install:
-  - cd application/ && ./gradlew build app
+  - cd application/ && ./gradlew build connectedCheck
