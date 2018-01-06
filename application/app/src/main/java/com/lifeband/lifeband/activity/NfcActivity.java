@@ -10,6 +10,7 @@ import android.nfc.tech.NfcB;
 import android.nfc.tech.NfcF;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
@@ -112,6 +113,7 @@ public class NfcActivity extends AppCompatActivity {
         }
 
         Intent newIntent = new Intent(this, MainActivity.class);
+        Log.d("nfcActivity", "Sending Extra tagData: " + tagData);
         newIntent.putExtra("tagData", tagData);
         startActivity(newIntent);
     }
