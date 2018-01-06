@@ -6,4 +6,5 @@ android:
     - platform-tools
     - tools
     
+before_install: sdkmanager --licenses
 install: cd application/ && ./gradlew build app
