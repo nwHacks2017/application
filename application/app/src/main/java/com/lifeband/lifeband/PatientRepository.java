@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.util.Log;
 
 import com.android.volley.Request;
+import com.android.volley.VolleyError;
 import com.lifeband.lifeband.exception.ServerException;
 
 import org.json.JSONException;
@@ -19,22 +20,13 @@ public class PatientRepository {
         this.backendClient = backendClient;
     }
 
-    public PatientData getPatientById(String id) throws ServerException {
+    public void getPatientById(String id, BackendClient.VolleyCallback callback) {
         Uri.Builder url = BackendClient.getBaseUrl();
         url.appendPath("patient");
         url.appendPath(id);
 
-        JSONObject response = backendClient.sendRequest(Request.Method.GET, url.build());
-
-        PatientData patientData = null;
-        try {
-            patientData = PatientData.fromJsonObject(response);
-        } catch (JSONException e) {
-            Log.e(TAG, "Failed to parse JSON response from server.");
-            e.printStackTrace();
-            // TODO: Throw exception
-        }
-        return patientData;
+        Log.d(TAG, "Sending patient ID to server.");
+        backendClient.sendRequest(Request.Method.GET, url.build(), callback);
     }
 
 }
