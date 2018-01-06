@@ -12,5 +12,4 @@ android:
     - 'google-gdk-license-.+'
 
 install:
-  - echo y | android update sdk -u -a -t build-tools-26.0.2
   - cd application/ && ./gradlew build app
