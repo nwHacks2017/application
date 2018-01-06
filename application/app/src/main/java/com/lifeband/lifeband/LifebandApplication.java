@@ -7,11 +7,20 @@ import com.android.volley.toolbox.Volley;
 
 public class LifebandApplication extends Application {
 
+    private static GlobalVars globalVars;
+
     private static RequestQueue requestQueue;
 
     private static BackendClient backendClient;
 
     private static PatientRepository patientRepository;
+
+    public GlobalVars getGlobalVars() {
+        if(globalVars == null) {
+            globalVars = new GlobalVars();
+        }
+        return globalVars;
+    }
 
     public RequestQueue getRequestQueue() {
         return Volley.newRequestQueue(getApplicationContext());

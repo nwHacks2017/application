@@ -7,15 +7,9 @@ import android.nfc.NfcAdapter;
 import android.nfc.tech.Ndef;
 import android.nfc.tech.NfcA;
 import android.nfc.tech.NfcB;
-import android.nfc.tech.NfcF;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.animation.Animation;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.RotateAnimation;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lifeband.lifeband.NfcReader;
@@ -106,7 +100,6 @@ public class NfcActivity extends AppCompatActivity {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
             return;
         }
-
         if(tagData == null) {
             Toast.makeText(this, "No tag data to read.", Toast.LENGTH_SHORT).show();
             return;

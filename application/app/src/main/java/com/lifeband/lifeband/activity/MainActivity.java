@@ -5,43 +5,35 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-
-import android.net.Uri;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.NetworkError;
-import com.android.volley.NoConnectionError;
-import com.android.volley.ParseError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.ServerError;
-import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
+import com.lifeband.lifeband.BackendClient;
+import com.lifeband.lifeband.LifebandApplication;
 import com.lifeband.lifeband.NfcReader;
 import com.lifeband.lifeband.PatientData;
-import com.lifeband.lifeband.PatientRepository;
 import com.lifeband.lifeband.R;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = MainActivity.class.getSimpleName();
+
     private TextView textView;
 
     private ProgressDialog mProgress;
@@ -53,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
     private NfcReader nfcReader;
 
     private PatientData patientData;
-    private PatientRepository patientRepository;
     private final String TAG_REQUEST = "MY_TAG";
 
     private class DataModel {
@@ -65,14 +56,15 @@ public class MainActivity extends AppCompatActivity {
 
     public MainActivity(){
         super();
-
-
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        requestTagData();
 
         // Initialize NFC Adapter
         Toolbar myToolbar = (Toolbar) findViewById(R.id.apptoolbar);
@@ -182,6 +174,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onDestroy() {
+        ((LifebandApplication)getApplication())
+                .getGlobalVars()
+                .setCurrentPatientData(null);
+
         super.onDestroy();
     }
 
@@ -198,6 +194,49 @@ public class MainActivity extends AppCompatActivity {
         //jsonObjRequest.cancel();
         //( or )
         //mVolleyQueue.cancelAll(TAG_REQUEST);
+    }
+
+    private void requestTagData() {
+
+        String tagData = getIntent().getStringExtra("tagData");
+        Log.d(TAG, "Receiving Extra tagData: " + tagData);
+
+        ((LifebandApplication)getApplication())
+                .getGlobalVars()
+                .setCurrentPatientData(null);
+
+        ((LifebandApplication)getApplication())
+                .getPatientRepository()
+                .getPatientById(tagData, new BackendClient.VolleyCallback(){
+                    @Override
+                    public void onSuccessResponse(JSONObject response) {
+                        PatientData patientData = null;
+
+                        try {
+                            patientData = PatientData.fromJsonObject(response);
+                        } catch (JSONException e) {
+                            Log.e(TAG, "Failed to parse JSON response from server.");
+                            e.printStackTrace();
+                            // TODO: Throw exception
+                        }
+
+                        ((LifebandApplication)getApplication())
+                                .getGlobalVars()
+                                .setCurrentPatientData(patientData);
+                    }
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(
+                                getApplication(),
+                                error.getCause() + ": " + error.getMessage(),
+                                Toast.LENGTH_SHORT
+                        ).show();
+                    }
+                });
+
+        // Data is returned asynchronously
+
     }
 
 }
