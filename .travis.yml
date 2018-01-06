@@ -4,11 +4,13 @@ android:
   components:
     - tools
     - platform-tools
+    - build-tools-26.0.2
     - tools
   licences:
     - 'android-sdk-preview-license-.+'
     - 'android-sdk-license-.+'
     - 'google-gdk-license-.+'
 
-    
-install: cd application/ && ./gradlew build app
+install:
+  - echo y | android update sdk -u -a -t build-tools-26.0.2
+  - cd application/ && ./gradlew build app
