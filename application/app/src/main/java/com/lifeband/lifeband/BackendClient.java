@@ -34,7 +34,10 @@ public class BackendClient {
     }
 
     public static Uri.Builder getBaseUrl() {
-        return Uri.parse(URL + PORT).buildUpon();
+        if(PORT.isEmpty()) {
+            return Uri.parse(URL).buildUpon();
+        }
+        return Uri.parse(URL + ":" + PORT).buildUpon();
     }
 
     /**
