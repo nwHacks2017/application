@@ -5,6 +5,10 @@ android:
     - tools
     - platform-tools
     - tools
+  licences:
+    - 'android-sdk-preview-license-.+'
+    - 'android-sdk-license-.+'
+    - 'google-gdk-license-.+'
+
     
-before_install: yes | sdkmanager --licenses
 install: cd application/ && ./gradlew build app
