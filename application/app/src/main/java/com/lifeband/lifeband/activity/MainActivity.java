@@ -71,17 +71,13 @@ public class MainActivity extends AppCompatActivity {
         myToolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(myToolbar);
 
-        // FAB
         final Context con = getApplicationContext();
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setBackgroundColor(getResources().getColor(R.color.colorComplement));
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent i  = new Intent(con, NfcActivity.class);
                 startActivity(i);
-
             }
         });
 
