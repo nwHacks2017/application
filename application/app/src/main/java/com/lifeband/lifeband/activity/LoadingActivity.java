@@ -12,6 +12,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
+import com.android.volley.ParseError;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.lifeband.lifeband.R;
 import com.lifeband.lifeband.application.GlobalVars;
@@ -21,6 +27,9 @@ import com.lifeband.lifeband.service.BackendClient;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.net.HttpURLConnection;
+import java.util.Optional;
 
 public class LoadingActivity extends AppCompatActivity {
 
@@ -66,11 +75,40 @@ public class LoadingActivity extends AppCompatActivity {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(
-                                getApplication(),
-                                error.getCause() + ": " + error.getMessage(),
-                                Toast.LENGTH_LONG
-                        ).show();
+                        Log.i(TAG, error.toString());
+                        error.printStackTrace();
+
+                        if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                            Toast.makeText(
+                                    getApplication(),
+                                    "Could not connect to the server.",
+                                    Toast.LENGTH_LONG
+                            ).show();
+                        } else if (error instanceof AuthFailureError) {
+                            Toast.makeText(
+                                    getApplicationContext(),
+                                    "Failed to authenticate with the server.",
+                                    Toast.LENGTH_LONG
+                            ).show();
+                        } else if (error instanceof ServerError) {
+                            Toast.makeText(
+                                    getApplicationContext(),
+                                    "The server returned an internal error.",
+                                    Toast.LENGTH_LONG
+                            ).show();
+                        } else if (error instanceof NetworkError) {
+                            Toast.makeText(
+                                    getApplicationContext(),
+                                    "Unknown etwork error.",
+                                    Toast.LENGTH_LONG
+                            ).show();
+                        } else if (error instanceof ParseError) {
+                            Toast.makeText(
+                                    getApplicationContext(),
+                                    "The server response could not be understood.",
+                                    Toast.LENGTH_LONG
+                            ).show();
+                        }
                     }
                 });
 
@@ -81,11 +119,11 @@ public class LoadingActivity extends AppCompatActivity {
 
         successResponse = false;
 
-        new CountDownTimer(3000, 200) {
+        new CountDownTimer(6000, 200) {
 
             public void onTick(long millisUntilFinished) {
                 Log.d(TAG, "Checking if patient data has been received from the server.");
-                if(getGlobalVars().getCurrentPatientData() != null) {
+                if (getGlobalVars().getCurrentPatientData() != null) {
                     successResponse = true;
                     Intent newIntent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(newIntent);
@@ -93,13 +131,9 @@ public class LoadingActivity extends AppCompatActivity {
             }
 
             public void onFinish() {
-                if(!successResponse) {
+                if (!successResponse) {
                     Log.i(TAG, "Timed out while retrieving patient data from server.");
-                    Toast.makeText(
-                            getApplication(),
-                            "Could not connect to the server.",
-                            Toast.LENGTH_LONG
-                    ).show();
+                    // Notification to user is handled by callback response
                     finish();
                 }
             }

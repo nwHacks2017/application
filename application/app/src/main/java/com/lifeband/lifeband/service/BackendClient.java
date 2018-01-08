@@ -60,7 +60,7 @@ public class BackendClient {
         );
 
         request.setRetryPolicy(new DefaultRetryPolicy(
-                5000,
+                3000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
         ));
