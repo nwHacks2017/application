@@ -11,14 +11,6 @@ android:
     - 'android-sdk-license-.+'
     - 'google-gdk-license-.+'
 
-before_script:
-  # Emulator Management: Create, Start and Wait
-  - android list targets
-  - echo no | android create avd --force -n test -t android-25 --abi armeabi-v7a
-  - emulator -avd test -no-audio -no-window &
-  - android-wait-for-emulator
-  - adb shell input keyevent 82 &
-
 script:
   - cd application/
-  - ./gradlew build connectedCheck
+  - ./gradlew build
