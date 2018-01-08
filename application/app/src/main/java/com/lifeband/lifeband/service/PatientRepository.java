@@ -1,14 +1,9 @@
-package com.lifeband.lifeband;
+package com.lifeband.lifeband.service;
 
 import android.net.Uri;
 import android.util.Log;
 
 import com.android.volley.Request;
-import com.android.volley.VolleyError;
-import com.lifeband.lifeband.exception.ServerException;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class PatientRepository {
 

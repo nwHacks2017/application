@@ -1,4 +1,4 @@
-package com.lifeband.lifeband;
+package com.lifeband.lifeband.service;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,9 +6,7 @@ import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.nfc.tech.Ndef;
-import android.nfc.tech.NfcA;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.lifeband.lifeband.exception.NfcException;
 

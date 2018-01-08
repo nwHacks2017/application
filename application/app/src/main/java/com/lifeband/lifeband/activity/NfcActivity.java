@@ -12,7 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.lifeband.lifeband.NfcReader;
+import com.lifeband.lifeband.service.NfcReader;
 import com.lifeband.lifeband.R;
 import com.lifeband.lifeband.exception.NfcException;
 

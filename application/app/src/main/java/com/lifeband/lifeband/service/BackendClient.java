@@ -1,4 +1,4 @@
-package com.lifeband.lifeband;
+package com.lifeband.lifeband.service;
 
 import android.net.Uri;
 import android.util.Log;

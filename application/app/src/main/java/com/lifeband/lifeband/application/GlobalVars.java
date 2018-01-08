@@ -1,6 +1,6 @@
 package com.lifeband.lifeband.application;
 
-import com.lifeband.lifeband.PatientData;
+import com.lifeband.lifeband.data.PatientData;
 
 public class GlobalVars {
 

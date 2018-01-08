@@ -18,9 +18,9 @@ import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
-import com.lifeband.lifeband.BackendClient;
-import com.lifeband.lifeband.NfcReader;
-import com.lifeband.lifeband.PatientData;
+import com.lifeband.lifeband.service.BackendClient;
+import com.lifeband.lifeband.service.NfcReader;
+import com.lifeband.lifeband.data.PatientData;
 import com.lifeband.lifeband.R;
 import com.lifeband.lifeband.application.LifebandApplication;
 

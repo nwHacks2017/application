@@ -1,4 +1,4 @@
-package com.lifeband.lifeband;
+package com.lifeband.lifeband.data;
 
 import android.os.Parcel;
 import android.os.Parcelable;
