@@ -64,8 +64,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        requestTagData();
-
         // Initialize NFC Adapter
         Toolbar myToolbar = (Toolbar) findViewById(R.id.apptoolbar);
         myToolbar.setTitleTextColor(Color.WHITE);
@@ -190,50 +188,6 @@ public class MainActivity extends AppCompatActivity {
         //jsonObjRequest.cancel();
         //( or )
         //mVolleyQueue.cancelAll(TAG_REQUEST);
-    }
-
-    private void requestTagData() {
-
-        String tagData = getIntent().getStringExtra("tagData");
-        Log.d(TAG, "Receiving Extra tagData: " + tagData);
-
-        ((LifebandApplication)getApplication())
-                .getGlobalVars()
-                .setCurrentPatientData(null);
-
-        ((LifebandApplication)getApplication())
-                .getGlobalServices()
-                .getPatientRepository()
-                .getPatientById(tagData, new BackendClient.VolleyCallback(){
-                    @Override
-                    public void onSuccessResponse(JSONObject response) {
-                        PatientData patientData = null;
-
-                        try {
-                            patientData = PatientData.fromJsonObject(response);
-                        } catch (JSONException e) {
-                            Log.e(TAG, "Failed to parse JSON response from server.");
-                            e.printStackTrace();
-                            // TODO: Throw exception
-                        }
-
-                        ((LifebandApplication)getApplication())
-                                .getGlobalVars()
-                                .setCurrentPatientData(patientData);
-                    }
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(
-                                getApplication(),
-                                error.getCause() + ": " + error.getMessage(),
-                                Toast.LENGTH_SHORT
-                        ).show();
-                    }
-                });
-
-        // Data is returned asynchronously
-
     }
 
 }
