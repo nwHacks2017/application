@@ -1,13 +1,10 @@
-package com.lifeband.lifeband;
-
-import android.app.Application;
+package com.lifeband.lifeband.application;
 
 import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.Volley;
+import com.lifeband.lifeband.BackendClient;
+import com.lifeband.lifeband.PatientRepository;
 
-public class LifebandApplication extends Application {
-
-    private static GlobalVars globalVars;
+public class GlobalServices {
 
     private static RequestQueue requestQueue;
 
@@ -15,15 +12,13 @@ public class LifebandApplication extends Application {
 
     private static PatientRepository patientRepository;
 
-    public GlobalVars getGlobalVars() {
-        if(globalVars == null) {
-            globalVars = new GlobalVars();
-        }
-        return globalVars;
+    public GlobalServices(RequestQueue requestQueue) {
+        GlobalServices.requestQueue = requestQueue;
     }
 
     public RequestQueue getRequestQueue() {
-        return Volley.newRequestQueue(getApplicationContext());
+        // Set by constructor
+        return requestQueue;
     }
 
     public BackendClient getBackendClient() {

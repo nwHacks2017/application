@@ -19,10 +19,10 @@ import android.widget.Toast;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.lifeband.lifeband.BackendClient;
-import com.lifeband.lifeband.LifebandApplication;
 import com.lifeband.lifeband.NfcReader;
 import com.lifeband.lifeband.PatientData;
 import com.lifeband.lifeband.R;
+import com.lifeband.lifeband.application.LifebandApplication;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -206,6 +206,7 @@ public class MainActivity extends AppCompatActivity {
                 .setCurrentPatientData(null);
 
         ((LifebandApplication)getApplication())
+                .getGlobalServices()
                 .getPatientRepository()
                 .getPatientById(tagData, new BackendClient.VolleyCallback(){
                     @Override
