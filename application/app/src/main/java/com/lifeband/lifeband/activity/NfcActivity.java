@@ -17,6 +17,9 @@ import com.lifeband.lifeband.R;
 import com.lifeband.lifeband.exception.NfcException;
 
 public class NfcActivity extends AppCompatActivity {
+
+    private static final String TAG = NfcActivity.class.getSimpleName();
+
     private static final float ROTATE_FROM = 0.0f;
     private static final float ROTATE_TO = -10.0f * 360.0f;// 3.141592654f * 32.0f;
 
@@ -31,6 +34,7 @@ public class NfcActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_nfc);
 
         try {
             nfcAdapter = NfcReader.getNfcAdapter(this);
@@ -58,8 +62,6 @@ public class NfcActivity extends AppCompatActivity {
                 new String[]{NfcB.class.getName()}
         };
 
-
-        setContentView(R.layout.activity_nfc);
 /*        RotateAnimation anim =  new RotateAnimation(30, 90,
                 Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         anim.setInterpolator(new LinearInterpolator());
@@ -85,6 +87,7 @@ public class NfcActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
+
         if(nfcAdapter != null) {
             nfcAdapter.enableForegroundDispatch(this, pendingIntent, intentFilters, nfcTechList);
         }
@@ -105,8 +108,8 @@ public class NfcActivity extends AppCompatActivity {
             return;
         }
 
-        Intent newIntent = new Intent(this, MainActivity.class);
-        Log.d("nfcActivity", "Sending Extra tagData: " + tagData);
+        Intent newIntent = new Intent(this, LoadingActivity.class);
+        Log.d(TAG, "Sending Extra tagData: " + tagData);
         newIntent.putExtra("tagData", tagData);
         startActivity(newIntent);
     }

@@ -21,13 +21,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.MainActivity"
-            android:label="Lifeband"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity
             android:name=".activity.NfcActivity"
             android:label="@string/title_activity_nfc"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.LoadingActivity"
+            android:label="@string/title_activity_loading"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:label="Lifeband"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.InformationActivity"

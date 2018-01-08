@@ -4,6 +4,7 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_splash">SplashActivity</string>
     <string name="title_activity_nfc">NfcActivity</string>
+    <string name="title_activity_loading">LoadingActivity</string>
     <string name="title_activity_information">InformationActivity</string>
     <string name="title_activity_emergency_contact">EmergencyContact</string>
     <string name="title_activity_history">HistoryActivity</string>

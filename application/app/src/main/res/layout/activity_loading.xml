@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:layout_alignParentBottom="false"
+    android:layout_alignParentStart="false"
+    android:layout_alignParentLeft="false"
+    android:layout_alignWithParentIfMissing="false"
+    android:layout_centerHorizontal="false"
+    android:layout_centerInParent="false"
+    android:background="#4C92CE"
+    android:gravity="center_vertical|center_horizontal"
+    android:orientation="vertical"
+    tools:context="com.lifeband.lifeband.activity.LoadingActivity">
+
+    <ImageView
+        android:id="@+id/rotator"
+        android:layout_width="224dp"
+        android:layout_height="261dp"
+        app:srcCompat="@drawable/icon_big_nfc"
+        tools:layout_editor_absoluteX="80dp"
+        tools:layout_editor_absoluteY="125dp" />
+
+    <TextView
+        android:id="@+id/loadingText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Loading..."
+        android:textColor="@android:color/background_light"
+        android:textColorLink="@android:color/background_light"
+        tools:layout_editor_absoluteX="162dp"
+        tools:layout_editor_absoluteY="415dp" />
+</LinearLayout>
