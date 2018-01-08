@@ -13,59 +13,60 @@ import org.json.JSONObject;
 
 public class BackendClient {
 
-    private RequestQueue requestQueue;
-
     private static final String TAG = BackendClient.class.getSimpleName();
     private static final String URL = "http://ec2-52-26-139-171.us-west-2.compute.amazonaws.com";
     private static final String PORT = "8080";
+
+    private RequestQueue requestQueue;
 
     public BackendClient(RequestQueue requestQueue) {
         this.requestQueue = requestQueue;
     }
 
     public static Uri.Builder getBaseUrl() {
-        if(PORT.isEmpty()) {
+        if (PORT.isEmpty()) {
             return Uri.parse(URL).buildUpon();
         }
         return Uri.parse(URL + ":" + PORT).buildUpon();
     }
 
     /**
-     * Sends a request to the backend server and returns the parsed response.
+     * Sends a request to the backend server and returns the parsed response through the callback.
      *
-     * @param method com.android.volley.Request.Method value representing the tyep of REST call
-     * @param url Full URL to send the request to
+     * @param method   com.android.volley.Request.Method value representing the type of REST call
+     * @param url      Full URL (and port) to send the request to
+     * @param callback Callback function to handle responses, success or failure
      */
     public void sendRequest(int method, Uri url, final VolleyCallback callback) {
 
-        JsonObjectRequest jsonObjRequest = new JsonObjectRequest(
-            method, url.toString(), null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest request = new JsonObjectRequest(
+                method, url.toString(), null, new Response.Listener<JSONObject>() {
 
-                @Override
-                public void onResponse(JSONObject response) {
-                    Log.d(TAG, "Received response from server.");
-                    callback.onSuccessResponse(response);
-                }
-
-            }, new Response.ErrorListener() {
-
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    error.printStackTrace();
-                    callback.onErrorResponse(error);
-                }
-
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.d(TAG, "Received response from server " + URL);
+                callback.onSuccessResponse(response);
             }
+
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+                callback.onErrorResponse(error);
+            }
+
+        }
         );
 
-        jsonObjRequest.setRetryPolicy(new DefaultRetryPolicy(
+        request.setRetryPolicy(new DefaultRetryPolicy(
                 5000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
         ));
 
-        Log.d(TAG, "Sending request to server.");
-        requestQueue.add(jsonObjRequest);
+        Log.d(TAG, "Sending request to server " + URL);
+        requestQueue.add(request);
     }
 
     public interface VolleyCallback {
