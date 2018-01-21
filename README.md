@@ -1,4 +1,4 @@
-# <img src="./img/logo.png" width="40"> Luminescence: Lifeband Application (nwHacks 2017)
+# <img src="./img/icon.png" width="40"> Luminescence: Lifeband Application (nwHacks 2017)
 
 [![Build Status](https://travis-ci.org/nwHacks2017/application.svg?branch=master)](https://travis-ci.org/nwHacks2017/application)
 [![License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/nwHacks2017/application/blob/master/LICENSE)
