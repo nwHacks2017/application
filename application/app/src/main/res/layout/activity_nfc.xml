@@ -7,7 +7,6 @@
 
     android:layout_alignParentBottom="false"
     android:layout_alignParentStart="false"
-    android:layout_alignParentLeft="false"
     android:layout_alignWithParentIfMissing="false"
     android:layout_centerHorizontal="false"
     android:layout_centerInParent="false"
@@ -23,15 +22,22 @@
         android:layout_height="261dp"
         app:srcCompat="@drawable/icon_big_nfc"
         tools:layout_editor_absoluteX="80dp"
-        tools:layout_editor_absoluteY="125dp" />
+        tools:layout_editor_absoluteY="125dp"
+        android:contentDescription="@string/nfc_tap_icon" />
 
     <TextView
-        android:id="@+id/testingNfc"
+        android:id="@+id/nfcTapStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Please tap your phone with a patient tag."
+        android:layout_marginVertical="48dp"
+        android:layout_marginHorizontal="36dp"
+        android:textAlignment="center"
+        android:text="@string/nfc_tap_status"
+        android:textSize="18sp"
         android:textColor="@android:color/background_light"
         android:textColorLink="@android:color/background_light"
         tools:layout_editor_absoluteX="162dp"
-        tools:layout_editor_absoluteY="415dp" />
+        tools:layout_editor_absoluteY="415dp"
+        tools:targetApi="o" />
+
 </LinearLayout>

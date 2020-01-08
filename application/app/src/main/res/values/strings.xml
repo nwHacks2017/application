@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Lifeband</string>
 
+    <!-- NFC Activity -->
+    <string name="nfc_tap_icon">NFC Tap Icon</string>
+    <string name="nfc_tap_status">Please tap your phone with a patient tag.</string>
+
 </resources>
