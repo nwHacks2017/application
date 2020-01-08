@@ -116,7 +116,7 @@ public class NfcActivity extends AppCompatActivity {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
             return;
         }
-        if(tagData == null) {
+        if(tagData == null || tagData.isEmpty()) {
             Toast.makeText(this, "No tag data to read.", Toast.LENGTH_SHORT).show();
             return;
         }

@@ -65,6 +65,10 @@ public class NfcReader {
         if(ndefTag == null) {
             throw new NfcException(NfcException.Reason.INVALID_TAG_TYPE);
         }
+        // Unformatted empty tag
+        else if (ndefTag.getCachedNdefMessage() == null) {
+            return "";
+        }
 
         NdefRecord extractedRecord = null;
         for(NdefRecord ndefRecord : ndefTag.getCachedNdefMessage().getRecords()) {
