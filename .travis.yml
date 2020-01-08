@@ -4,9 +4,8 @@ android:
   components:
     - tools
     - platform-tools
-    - build-tools-26.0.2
     - tools
-    - android-26
+    - android-28
   licences:
     - 'android-sdk-preview-license-.+'
     - 'android-sdk-license-.+'
