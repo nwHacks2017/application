@@ -1,6 +1,17 @@
 //noinspection GradleDeprecatedConfiguration
 apply plugin: 'com.android.application'
 
+// Initialize the keystore credentials from the keystore.properties file
+def filename = "keystore.properties"
+if (!rootProject.file(filename).exists()) {
+    // Substitute with template if no configuration exists
+    print("No keystore.properties file found.")
+    filename += ".template"
+}
+
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(rootProject.file(filename)))
+
 android {
     compileSdkVersion 29
     defaultConfig {
@@ -11,10 +22,19 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    signingConfigs {
+        release {
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 }
