@@ -7,25 +7,19 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
-import com.lifeband.lifeband.service.BackendClient;
 import com.lifeband.lifeband.service.NfcReader;
 import com.lifeband.lifeband.data.PatientData;
 import com.lifeband.lifeband.R;
 import com.lifeband.lifeband.application.LifebandApplication;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
