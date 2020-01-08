@@ -64,12 +64,11 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(myToolbar);
 
         final Context con = getApplicationContext();
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i  = new Intent(con, NfcActivity.class);
-                startActivity(i);
+                finish();
             }
         });
 

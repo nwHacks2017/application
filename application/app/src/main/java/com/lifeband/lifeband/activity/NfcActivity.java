@@ -1,6 +1,7 @@
 package com.lifeband.lifeband.activity;
 
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.nfc.NfcAdapter;
@@ -10,6 +11,9 @@ import android.nfc.tech.NfcB;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lifeband.lifeband.service.NfcReader;
@@ -74,6 +78,15 @@ public class NfcActivity extends AppCompatActivity {
 
 // Later.. stop the animation
         splash.setAnimation(null);*/
+
+        final Button button = findViewById(R.id.btn_nfc_to_demo);
+        final Context context = this;
+        button.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                startActivity(new Intent(context, MainActivity.class));
+            }
+        });
+
     }
 
     @Override

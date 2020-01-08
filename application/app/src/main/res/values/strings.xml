@@ -4,5 +4,6 @@
     <!-- NFC Activity -->
     <string name="nfc_tap_icon">NFC Tap Icon</string>
     <string name="nfc_tap_status">Please tap your phone with a patient tag.</string>
+    <string name="nfc_demo">See an Offline Demo</string>
 
 </resources>
